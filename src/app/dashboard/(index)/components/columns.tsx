@@ -29,7 +29,6 @@ export default function productsColumns(): ColumnDef<Product>[] {
       header: "Product",
       minSize: 300,
       cell: ({ row }) => {
-        // TODO: detayları koy
         return (
           <div className="flex items-center gap-2">
             <Image
