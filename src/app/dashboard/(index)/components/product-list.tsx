@@ -22,7 +22,6 @@ export default function ProductList({
   productResponse: ProductResponse;
   page: number;
 }) {
-  console.log(page);
   const router = useRouter();
 
   return (

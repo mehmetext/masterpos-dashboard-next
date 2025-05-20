@@ -25,6 +25,7 @@ import { useSidebar } from "./ui/sidebar";
 
 export default function Header() {
   const { toggleSidebar } = useSidebar();
+
   return (
     <Card className="-mt-6 lg:my-0 -mx-[30px] lg:mx-0 rounded-none lg:rounded-xl py-[30px]! lg:py-6! shadow-none p-6 flex-row items-center justify-center">
       <picture>
