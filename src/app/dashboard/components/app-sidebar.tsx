@@ -14,10 +14,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props} className="!border-r-0">
       {/* Header */}
-      <SidebarHeader className="flex-row items-center justify-between p-8 border-b">
+      <SidebarHeader className="flex-row items-center group-data-[collapsible=icon]:justify-center justify-between p-8 border-b">
         <Link href="/dashboard">
           <picture>
-            <img src="/images/logo.svg" alt="master POS" className="h-14" />
+            <img
+              src="/images/logo.svg"
+              alt="master POS"
+              className="h-14 group-data-[collapsible=icon]:hidden"
+            />
+            <img
+              src="/images/logo-icon.svg"
+              alt="master POS"
+              className="group-data-[collapsible=icon]:block hidden"
+            />
           </picture>
         </Link>
         <Button
