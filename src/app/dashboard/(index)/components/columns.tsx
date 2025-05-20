@@ -1,8 +1,10 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { formatPrice } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
+import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 import Image from "next/image";
 export default function productsColumns(): ColumnDef<Product>[] {
   return [
@@ -82,7 +84,23 @@ export default function productsColumns(): ColumnDef<Product>[] {
       accessorKey: "status",
       header: "Status",
       cell: ({ row }) => {
-        return row.original.status ? "Active" : "Inactive";
+        return row.original.status ? (
+          <Badge
+            className="w-30 py-2 font-semibold text-sm bg-[#89D2331A] text-[#89D233]"
+            variant="default"
+          >
+            <CheckCircleIcon className="size-4!" />
+            Completed
+          </Badge>
+        ) : (
+          <Badge
+            className="w-30 py-2 font-semibold text-sm bg-[#F272771A] text-[#F27277]"
+            variant="destructive"
+          >
+            <XCircleIcon className="size-4!" />
+            Canceled
+          </Badge>
+        );
       },
     },
   ];
