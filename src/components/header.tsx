@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,24 +17,35 @@ import {
   GlobeIcon,
   LogOutIcon,
   MailIcon,
+  Menu,
   MoonIcon,
   SunIcon,
 } from "lucide-react";
+import { useSidebar } from "./ui/sidebar";
 
 export default function Header() {
+  const { toggleSidebar } = useSidebar();
   return (
-    <Card className="p-6 flex-row items-center justify-center">
-      <div className="flex-1 flex flex-col">
+    <Card className="-mt-6 lg:my-0 -mx-[30px] lg:mx-0 rounded-none lg:rounded-xl py-[30px]! lg:py-6! shadow-none p-6 flex-row items-center justify-center">
+      <picture>
+        <img
+          src="/images/logo-icon.svg"
+          alt="master POS"
+          className="md:hidden"
+        />
+      </picture>
+      <div className="flex-1 lg:hidden block" />
+      <div className="hidden flex-1 lg:flex flex-col">
         <p className="text-2xl font-bold">Products</p>
         <p className="text-muted-foreground">Manage your products</p>
       </div>
-      <div className="flex items-center justify-center gap-3">
+      <div className="hidden lg:flex items-center justify-center gap-3">
         <SunIcon className="size-5" />
         <Switch className="[&_[data-slot=switch-thumb]]:bg-primary [&_[data-slot=switch-thumb]]:size-6 h-6 w-12 data-[state=checked]:bg-input" />
         <MoonIcon className="size-5" />
       </div>
-      <div className="w-px h-full bg-border" />
-      <div className="flex gap-[30px] items-center justify-center">
+      <div className="hidden lg:block w-px h-full bg-border" />
+      <div className="hidden lg:flex gap-[30px] items-center justify-center">
         <GlobeIcon className="size-5" />
         <div className="relative">
           <BellIcon className="size-5" />
@@ -70,6 +83,14 @@ export default function Header() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <Button
+        size="icon"
+        variant="ghost"
+        className="lg:hidden"
+        onClick={toggleSidebar}
+      >
+        <Menu className="size-7" />
+      </Button>
     </Card>
   );
 }
