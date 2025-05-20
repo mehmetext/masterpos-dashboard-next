@@ -1,3 +1,5 @@
+<img src="./public/screenshot.png" alt="Cover"/>
+
 # Master POS Dashboard Design
 
 ## Tech Stack
