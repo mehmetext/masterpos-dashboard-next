@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,8 +12,19 @@ import {
   Search,
   SearchIcon,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import CommentsDataTable from "./data-table";
 
-export default function ProductList() {
+export default function ProductList({
+  productResponse,
+  page,
+}: {
+  productResponse: ProductResponse;
+  page: number;
+}) {
+  console.log(page);
+  const router = useRouter();
+
   return (
     <Card className="gap-10 p-[30px]">
       <div className="flex justify-between items-center gap-2">
@@ -45,6 +58,17 @@ export default function ProductList() {
           <PlusCircleIcon /> Add New Product
         </Button>
       </div>
+      <CommentsDataTable
+        data={productResponse}
+        page={page}
+        onPaginationChange={(pageIndex) => {
+          router.push(`/dashboard?page=${pageIndex + 1}`);
+        }}
+        onSortingChange={(sorting) => {
+          console.log(sorting);
+        }}
+        sorting={[]}
+      />
     </Card>
   );
 }

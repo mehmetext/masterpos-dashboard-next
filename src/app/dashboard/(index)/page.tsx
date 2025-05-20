@@ -1,10 +1,20 @@
+import { getProducts } from "@/app/actions/get-products";
 import Header from "@/components/header";
 import { Card } from "@/components/ui/card";
 import { cn, formatNumber } from "@/lib/utils";
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 import ProductList from "./components/product-list";
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page: string }>;
+}) {
+  const { page } = await searchParams;
 
-export default function DashboardPage() {
+  const productResponse = await getProducts(
+    isNaN(Number(page)) ? 1 : Number(page)
+  );
+
   return (
     <>
       <Header />
@@ -15,7 +25,10 @@ export default function DashboardPage() {
         <CardItem title="Pending Payment" value={1284} percentage={5} />
         <CardItem title="Canceled Order" value={836} percentage={-5} />
       </div>
-      <ProductList />
+      <ProductList
+        productResponse={productResponse}
+        page={isNaN(Number(page)) ? 1 : Number(page)}
+      />
     </>
   );
 }
