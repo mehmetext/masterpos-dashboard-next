@@ -126,7 +126,7 @@ export default function NavMenu() {
                         {item.subMenu?.map((subItem, subIndex) => (
                           <SidebarMenuSubItem key={subIndex}>
                             <Button
-                              className="w-full shadow-none justify-start bg-transparent text-muted-foreground hover:bg-transparent hover:text-accent-foreground"
+                              className="w-full shadow-none justify-start bg-transparent text-muted-foreground hover:bg-transparent hover:text-accent-foreground [&>svg]:text-muted-foreground hover:[&>svg]:text-accent-foreground"
                               size="sidebar-submenu"
                               asChild
                             >

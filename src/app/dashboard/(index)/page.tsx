@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import { Card } from "@/components/ui/card";
 import { cn, formatNumber } from "@/lib/utils";
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
+import ProductList from "./components/product-list";
 
 export default function DashboardPage() {
   return (
@@ -14,6 +15,7 @@ export default function DashboardPage() {
         <CardItem title="Pending Payment" value={1284} percentage={5} />
         <CardItem title="Canceled Order" value={836} percentage={-5} />
       </div>
+      <ProductList />
     </>
   );
 }

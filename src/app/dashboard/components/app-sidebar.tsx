@@ -40,8 +40,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {/* Content */}
       <SidebarContent className="p-8 gap-8">
         <div className="group-data-[collapsible=icon]:hidden relative">
-          <Input placeholder="Search here" className="pl-11" />
-          <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Input placeholder="Search here" className="pl-14" />
+          <Button
+            size="icon"
+            variant="ghost"
+            className="absolute left-px top-px p-[26px] [&_svg]:size-6!"
+          >
+            <Search />
+          </Button>
         </div>
         <NavMenu />
       </SidebarContent>
