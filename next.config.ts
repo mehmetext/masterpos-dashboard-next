@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "isiksoft-app-space.fra1.digitaloceanspaces.com",
+        hostname: "*",
       },
     ],
   },

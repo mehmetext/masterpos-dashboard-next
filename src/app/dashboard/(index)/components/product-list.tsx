@@ -15,13 +15,7 @@ import {
 import { useRouter } from "next/navigation";
 import CommentsDataTable from "./data-table";
 
-export default function ProductList({
-  productResponse,
-  page,
-}: {
-  productResponse: ProductResponse;
-  page: number;
-}) {
+export default function ProductList() {
   const router = useRouter();
 
   return (
@@ -58,8 +52,25 @@ export default function ProductList({
         </Button>
       </div>
       <CommentsDataTable
-        data={productResponse}
-        page={page}
+        data={[
+          {
+            id: 1,
+            name: "Product 1",
+            price: 100,
+            productCode: "1234567890",
+            barcode: "1234567890",
+            stock: 100,
+            status: true,
+            category: "Category 1",
+            description: "Description 1",
+            imageUrl: "https://picsum.photos/200/300",
+          },
+        ]}
+        pagination={{
+          page: 1,
+          totalPages: 1,
+          totalItems: 1,
+        }}
         onPaginationChange={(pageIndex) => {
           router.push(`/dashboard?page=${pageIndex + 1}`);
         }}

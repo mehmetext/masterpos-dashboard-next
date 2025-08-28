@@ -6,13 +6,17 @@ import productsColumns from "./columns";
 
 export default function CommentsDataTable({
   data,
-  page,
+  pagination,
   onPaginationChange,
   onSortingChange,
   sorting,
 }: {
-  data: ProductResponse;
-  page: number;
+  data: Product[];
+  pagination: {
+    page: number;
+    totalPages: number;
+    totalItems: number;
+  };
   onPaginationChange: (pageIndex: number, pageSize: number) => void;
   onSortingChange: (sorting: SortingState) => void;
   sorting: SortingState;
@@ -20,15 +24,15 @@ export default function CommentsDataTable({
   return (
     <DataTable
       columns={productsColumns()}
-      data={data.data}
+      data={data}
       manualPagination
-      pageCount={data.totalPages}
-      pageIndex={page - 1}
+      pageCount={pagination.totalPages}
+      pageIndex={pagination.page - 1}
       onPaginationChange={onPaginationChange}
       manualSorting
       onSortingChange={onSortingChange}
       sorting={sorting}
-      total={data.totalItems}
+      total={pagination.totalItems}
     />
   );
 }
